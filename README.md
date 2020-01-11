@@ -1,13 +1,15 @@
 # gat
 After working in multiple tech companies that have tools to streamline project management with git,
-I decided to create a tool that can be used to simplify the setup of a git project from scratch.  
+I decided to create a tool that can be used to simplify the setup of a git project but wrriten in python
+
+Insired by [hub](https://github.com/github/hub). I highly recommend you check them out.
 
 ---
 ## Table of Contents
 - [gat](#gat)
   - [Table of Contents](#table-of-contents)
 - [Setup](#setup)
-  - [Configuration File - `~/.gatconfig`](#configuration-file---gatconfig)
+  - [Configuration File - `~/.gat/config`](#configuration-file---gatconfig)
     - [Purpose](#purpose)
     - [Example](#example)
     - [Properties](#properties)
@@ -17,18 +19,18 @@ I decided to create a tool that can be used to simplify the setup of a git proje
       - [Example](#example-1)
 ---
 # Setup  
-## Configuration File - `~/.gatconfig`  
+## Configuration File - `~/.gat/config`  
 ### Purpose  
 The purpose of the `.gatconfig` file is too add a layer of configurability to the gat program.
 ### Example
 ```
-# ~/.gatconfig
+# ~/.gat/config
 USER = TheWongGuy
 ```
 ### Properties
-A list of the properties that can be set in `.gatconfig`.  
+A list of the properties that can be set in `~/.gat/config`.  
 
-| USER | Stores the default user that repositories should be found under. |
+| `USER` | Stores the default user that repositories should be found under. |
 |:----:|------------------------------------------------------------------|
 
 # Usage
@@ -43,6 +45,7 @@ This removes the need to provide an explicit url, however a url can be provided 
 ```bash
 git clone git@github.com:TheWongGuy/gat.git
 
-gat clone gat
+gat clone gat # If TheWongGuy is set in config
+gat clone TheWongGuy/gat
 gat clone --url git@github.com:TheWongGuy/gat.git
 ```
