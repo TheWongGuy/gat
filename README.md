@@ -28,7 +28,8 @@ The purpose of the `.gatconfig` file is too add a layer of configurability to th
 USER = TheWongGuy
 ```
 ### Properties
-A list of the properties that can be set in `~/.gat/config`.  
+
+
 |   `USER`   | Stores the default user that repositories should be found under. | NO DEFAULT   |
 |:----------:|------------------------------------------------------------------|--------------|
 | `PROJECTS` | Stores the default projects folder that repos will be saved too. | `~/projects` |
