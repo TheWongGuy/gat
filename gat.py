@@ -24,6 +24,13 @@ def config_check():
         wizard = Wizard(GAT_CONFIG)
         wizard.read_config()
     config = wizard.get_config()
+
+def populate_defaults():
+    global config
+
+    if(config.get("PROJECTS") is None):
+        config["PROJECTS"] = "~/projects"
+
     
 def handle_params(params):
     if(len(params) == 0):
@@ -50,4 +57,5 @@ def handle_params(params):
             
 
 config_check()
+populate_defaults()
 handle_params(sys.argv[1:])

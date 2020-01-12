@@ -16,7 +16,7 @@ class GitObj:
     def clone(self):
         clone = "git clone " + self.REPO_STRING
         # CD into project directory
-        user_directory ='~/projects/' + self.config["USER"]
+        user_directory = self.config["PROJECTS"] + '/' + self.config["USER"]
         project_directory = user_directory + "/" + self.repo
         with yaspin(text="Creating directory...", color="yellow") as spinner:
             try:
