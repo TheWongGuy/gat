@@ -1,5 +1,6 @@
 from src.modules.color import Color
 from yaspin import yaspin
+from src.modules.printer import Printer
 import json
 import os
 
@@ -27,7 +28,7 @@ class Wizard:
     def write_config(self):
         with yaspin(text="Creating config...", color="yellow") as spinner:
             try:
-                if not os.path.exists(self.config_path):
+                if not os.path.exists(os.path.dirname(self.config_path)):
                     os.makedirs(os.path.dirname(self.config_path))
                 f = open(self.config_path, 'w')  
                 f.write(json.dumps(self.config))
@@ -35,9 +36,7 @@ class Wizard:
                 spinner.ok("✅ ")
             except Exception as e:
                 spinner.fail("❌ ")
-                print(Color.RED + Color.BOLD)
-                print(e)
-                print(Color.END)
+                Printer.error(e)
 
     def read_config(self):
         try:
@@ -45,9 +44,7 @@ class Wizard:
             self.config = json.loads(f.read())
             f.close()
         except Exception as e:
-                print(Color.RED + Color.BOLD)
-                print(e)
-                print(Color.END)
+                Printer.error(e)
 
     def get_config(self):
         return self.config
