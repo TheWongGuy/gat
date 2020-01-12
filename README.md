@@ -1,6 +1,6 @@
 # gat
 After working in multiple tech companies that have tools to streamline project management with git,
-I decided to create a tool that can be used to simplify the setup of a git project but wrriten in python
+I decided to create a tool that can be used to simplify the setup of a git project.
 
 Insired by [hub](https://github.com/github/hub). I highly recommend you check them out.
 
