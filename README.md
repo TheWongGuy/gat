@@ -19,6 +19,8 @@ Insired by [hub](https://github.com/github/hub). I highly recommend you check th
       - [Example](#example-1)
     - [`gat cd`](#gat-cd)
       - [Example](#example-2)
+    - [`gat open`](#gat-open)
+      - [Example](#example-3)
 ---
 # Setup  
 ## Configuration File - `~/.gat/config`  
@@ -59,4 +61,12 @@ gat clone --url git@github.com:TheWongGuy/gat.git
 #### Example
 ```bash
 $ gat cd gat -> cd ~/projects/TheWongGuy/gat
+```
+
+### `gat open`
+`gat open` will open the corresponding URL of the git repository.
+
+#### Example
+```bash
+$ gat open
 ```

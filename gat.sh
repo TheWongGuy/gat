@@ -1,6 +1,6 @@
 #!/bin/bash
 function gat(){
-    CURDIR=$(pwd)
+    export CURDIR=$(pwd)
     TEMPFILE=$(echo ~/.gat/gattemporary)
     cd ~/.gat
     source .venv/bin/activate

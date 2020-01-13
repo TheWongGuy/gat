@@ -1,4 +1,4 @@
-import sys, os
+import sys, os, subprocess, webbrowser
 from iterfzf import iterfzf
 from src.modules.printer import Printer
 from src.modules.color import Color
@@ -75,6 +75,21 @@ def handle_params(params):
 
         os.system("echo \'" + project_path + "\'" + " > " + GAT_FOLDER + "/gattemporary")
         sys.exit(0)
+    elif(params[0] == "open"):
+        called_from = os.environ.get("CURDIR")
+        if(len(params) == 1):
+            gitrepo = called_from + '/.git'
+            if not os.path.exists(gitrepo):
+                Printer.error("Current directory is not a git repository.")
+                sys.exit(1)
+            remoteurl = subprocess.check_output('git config --get remote.origin.url', shell=True, cwd=called_from, universal_newlines=True)
+            remoteurl = remoteurl.replace(':', '/')
+            remoteurl = remoteurl.replace('git@', '')
+            remoteurl = 'http://www.' + remoteurl 
+            webbrowser.open(remoteurl, new=0, autoraise=True)
+
+            
+
 
 
 
