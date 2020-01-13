@@ -62,7 +62,7 @@ def handle_params(params):
         project = params[1]
         project_path = os.path.expanduser(config["PROJECTS"]) + "/" + config["USER"] + "/" + project
         if not os.path.exists(project_path):
-            projects = os.listdir(os.path.dirname(project_path))
+            projects = [dir for dir in os.listdir(os.path.dirname(project_path)) if os.path.isdir(os.path.join(os.path.dirname(project_path), dir))]
             filtered = list(fuzzyfinder(project, projects))
             if(len(filtered) == 0):
                 Printer.error("No project matches.")
