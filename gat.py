@@ -83,10 +83,19 @@ def handle_params(params):
                 Printer.error("Current directory is not a git repository.")
                 sys.exit(1)
             remoteurl = subprocess.check_output('git config --get remote.origin.url', shell=True, cwd=called_from, universal_newlines=True)
-            remoteurl = remoteurl.replace(':', '/')
-            remoteurl = remoteurl.replace('git@', '')
-            remoteurl = 'http://www.' + remoteurl 
-            webbrowser.open(remoteurl, new=0, autoraise=True)
+
+            if('git@' in remoteurl):
+                remoteurl = remoteurl.replace(':', '/')
+                remoteurl = remoteurl.replace('git@', '')
+                remoteurl = 'http://www.' + remoteurl 
+                Printer.important('-> Opening repo in browser.')
+                webbrowser.open(remoteurl, new=0, autoraise=True)
+            elif('http://' in remoteurl or 'https://' in remoteurl):
+                Printer.important('-> Opening repo in browser.')
+                webbrowser.open(remoteurl, new=0, autoraise=True)
+            else:
+                Printer.error("Could not parse git repository.")
+                sys.exit(1)
 
             
 
