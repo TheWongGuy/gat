@@ -17,6 +17,8 @@ Insired by [hub](https://github.com/github/hub). I highly recommend you check th
   - [Commands](#commands)
     - [`gat clone`](#gat-clone)
       - [Example](#example-1)
+    - [`gat cd`](#gat-cd)
+      - [Example](#example-2)
 ---
 # Setup  
 ## Configuration File - `~/.gat/config`  
@@ -49,4 +51,12 @@ git clone git@github.com:TheWongGuy/gat.git
 gat clone gat # If TheWongGuy is set in config
 gat clone TheWongGuy/gat
 gat clone --url git@github.com:TheWongGuy/gat.git
+```
+
+### `gat cd`
+`gat cd` will cd you into the corresponding project folder. It fuzzy finds the proper match.
+
+#### Example
+```bash
+$ gat cd gat -> cd ~/projects/TheWongGuy/gat
 ```
