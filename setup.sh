@@ -5,7 +5,6 @@ mkdir ~/.gat
 
 #
 cp ./gat.sh ~/.gat/gat.sh
-source ~/.gat/gat.sh
 #
 
 cp ./gat.py  ~/.gat/gat.py

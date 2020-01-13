@@ -52,10 +52,26 @@ def handle_params(params):
         gitobj = GitObj(repo, config)
         project_path = gitobj.clone()
         os.system("echo \'" + os.path.expanduser(project_path) + "\'" + " > " + GAT_FOLDER + "/gattemporary")
-        sys.exit(2)
-        
+        sys.exit(0)
+    elif(params[0] == "cd"):
+        if(len(params) < 2):
+            Printer.error("Expected a project name to find.")
+            sys.exit(1)
+        project = params[1]
+        project_path = os.path.expanduser(config["PROJECTS"]) + "/" + config["USER"] + "/" + project
+        if not os.path.exists(project_path):
+            Printer.error("Project does not exist.")
+            sys.exit(1)
+        os.system("echo \'" + project_path + "\'" + " > " + GAT_FOLDER + "/gattemporary")
+        sys.exit(0)
+
+
+
             
 
 config_check()
+# Remove temporary
+if os.path.exists(os.path.expanduser(GAT_FOLDER) + '/gattemporary'):
+    os.system("rm " + GAT_FOLDER + "/gattemporary")
 populate_defaults()
 handle_params(sys.argv[1:])
