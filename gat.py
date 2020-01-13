@@ -1,6 +1,8 @@
 import sys, os
+from iterfzf import iterfzf
 from src.modules.printer import Printer
 from src.modules.color import Color
+from fuzzyfinder import fuzzyfinder
 
 GAT_CONFIG = '~/.gat/config'
 GAT_FOLDER = '~/.gat'
@@ -60,8 +62,17 @@ def handle_params(params):
         project = params[1]
         project_path = os.path.expanduser(config["PROJECTS"]) + "/" + config["USER"] + "/" + project
         if not os.path.exists(project_path):
-            Printer.error("Project does not exist.")
-            sys.exit(1)
+            projects = os.listdir(os.path.dirname(project_path))
+            filtered = list(fuzzyfinder(project, projects))
+            if(len(filtered) == 0):
+                Printer.error("No project matches.")
+                sys.exit(1)
+            elif(len(filtered) == 1):
+                project_path = os.path.expanduser(config["PROJECTS"]) + "/" + config["USER"] + "/" + filtered[0]
+            else:
+                project = iterfzf(filtered)
+                project_path = os.path.expanduser(config["PROJECTS"]) + "/" + config["USER"] + "/" + project
+
         os.system("echo \'" + project_path + "\'" + " > " + GAT_FOLDER + "/gattemporary")
         sys.exit(0)
 

@@ -8,7 +8,8 @@ pylint = "*"
 
 [packages]
 yaspin = "*"
-fuzzywuzzy = "*"
+fuzzyfinder = "*"
+iterfzf = "*"
 
 [requires]
 python_version = "3.8"
